@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+
+    <script>
+        var Coins = 1
+        var CPC = 1
+        AddCPC(cpc, cost){
+            if(Coins >= cost){
+                CPC = CPC + cpc
+                Coins = Coins - cost
+            }
+        }
+
+        
+    </script>
+
+    <button id="button" style="padding: 5px;" onmouseout="document.getElementById('button').style.padding = '5px'" ;
+        onmouseover="document.getElementById('button').style.padding = '10px'" ;
+        onclick=" Coins = Coins + CPC; document.getElementById('output').innerHTML = 'Coins: ' + Coins">
+        Click Me!
+    </button>
+
+    <p id="output">Coins: 1</p>
+    <br>
+    <br>
+    <button onclick="AddCPC(1, 15)">More Coins Per Click</button>
+</body>
+</html>

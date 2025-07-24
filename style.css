@@ -1,0 +1,67 @@
+h1{
+    background-color: #ca6680;
+    color: #214F4B;
+    border-style:double;
+    border-width: 15px;
+   
+
+}
+body{
+    background-image: url(./Site-background-light.webp);
+}
+a, li{
+    font-size: 25pt;
+    
+    text-decoration: none;
+    text-align: left;
+}
+h1, h2, h3{
+    text-align: center;
+   
+
+}
+p{
+    color: #000000;
+    text-align: left;
+}
+h2{
+    font-size: 32.5pt;
+    background-color: #ca6680;
+    color: #214F4B;
+    border-style:solid;
+    border-color: #214F4B;
+    border-width: 4.1px;
+    padding: 10px;
+}
+ @keyframes HeaderMove{
+    from {bottom: 0px; opacity: 1;}
+    to {bottom: 50px; opacity: 0.01;}
+}
+ * :not(body){
+        position: relative;
+        animation-name: HeaderMove;
+        animation-duration: 1s;
+        animation-timing-function:ease-in;
+        animation-direction:reverse;
+}
+.xx-large{
+    font-size: xx-large;
+    text-align: center;
+}
+.BoxText{
+    font-size: x-large;
+    background-color: #ca6680;
+    color: #214F4B;
+    border: solid;
+    border-color: #214F4B;
+    padding: 2.5%;
+    padding-top: 2.5%;
+    padding-bottom: 2.5%;
+    padding-right: 5%;
+    font-style: italic;
+}
+#image-span{
+    display: inline-block;
+    
+}
+
