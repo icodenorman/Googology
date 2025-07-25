@@ -37,7 +37,7 @@ h2{
     from {bottom: 0px; opacity: 1;}
     to {bottom: 50px; opacity: 0.01;}
 }
- * :not(body){
+ * :not(body, #Coin){
         position: relative;
         animation-name: HeaderMove;
         animation-duration: 1s;
@@ -64,4 +64,6 @@ h2{
     display: inline-block;
     
 }
-
+button{
+    border-radius: 10px;
+}

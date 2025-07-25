@@ -1,4 +1,4 @@
-var words = ["googology", "knuth's-up-arrow-notation", "googolplexianth"]; //Word Storage
+var words = ["Googology", "knuthsuparrownotation", "googolplexianth", "Graham's", "fiftytwofactorial"]; //Word Storage
 
 var word = words[Math.floor(Math.random() * words.length)];
 //Word Picker (Random Number * list length)Floor))

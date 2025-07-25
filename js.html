@@ -1,37 +1,153 @@
 <!DOCTYPE html>
-<html lang="en">
+
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="./style.css">
+    <html lang="en">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Incremental</title>
+    <link rel="stylesheet" href="./style.css" />
+    <style>
+        #Coin {
+            position: absolute;
+            top: -10%;
+            width: 20px;
+            height: 20px;
+            opacity: 100%;
+            animation-duration: 1s;
+
+        }
+
+        @keyframes fall {
+            from {
+                top: -10%;
+                opacity: 100%;
+            }
+
+            to {
+                top: 100%;
+                opacity: 0%;
+            }
+        }
+    </style>
+
 </head>
 
 <body>
+    <audio loop autoplay id="fire">
+        <source src="./04. Mii Plaza.mp3">
+    </audio>
+    <img id="Coin" src="./OIP-removebg-preview.png" alt="Coin">
+    <div style="text-align: center; font-size: xx-large ">
+        <button id="button" style="padding: 20px; font-size: xx-large; border-radius: 10px;">
+            Click Me!
+        </button>
+    </div>
+    <p style="text-align: center; font-size: x-large" id="output">Coins: 0</p>
+    <p id="output2"></p>
 
+    <br />
+    <br />
+    <button id="button2" style="padding: 5px">
+        More Coins Per Click Cost: 15
+    </button>
+    <br>
+    <br>
+    <button style="padding: 5px;" id="buttonP">
+        Prestige - 1000
+    </button>
+    <div style="text-align: center; padding-top: 500px;">
+        <button style="padding: 15px; font-size: x-large;" id="WinButton">
+            20 Mil - Win
+        </button>
+    </div>
+
+
+    <div style="padding-top: 550px;">
+        <a href="./index.html">Home</a>
+    </div>
     <script>
-        var Coins = 1
-        var CPC = 1
-        AddCPC(cpc, cost){
-            if(Coins >= cost){
-                CPC = CPC + cpc
-                Coins = Coins - cost
-            }
+        let coins = 20000000;
+        let cpc = 1;
+        let cost = 15;
+        let psmult = 1
+        let costP = 1000
+        
+        document.getElementById('fire').play()
+
+        function updateUI() {
+            document.getElementById("output").innerHTML = "Coins: " + coins;
+            document.getElementById("button2").innerHTML = "More Coins Per Click  Cost: " + cost;
+            document.getElementById('buttonP').innerHTML = "Prestige - " + costP
         }
 
+        // clicker button logic
+        document.getElementById("button").addEventListener("click", function () {
+            coins += cpc * psmult;
+            updateUI();
+            FallingCoins()
+
+        });
+
+        // upgrade logic
+        document.getElementById("button2").addEventListener("click", function () {
+            if (coins >= cost) {
+                cpc++;
+                coins -= cost;
+                cost *= 2;
+                updateUI();
+
+            }
+        });
+
+        // Padding effects for button2
+        const btn2 = document.getElementById("button2");
+        btn2.addEventListener("mouseover", () => btn2.style.padding = "7.5px");
+        btn2.addEventListener("mouseout", () => btn2.style.padding = "5px");
+
+        // Padding effects for button
+        const btn = document.getElementById("button");
+        btn.addEventListener("mouseover", () => btn.style.padding = "30px");
+        btn.addEventListener("mouseout", () => btn.style.padding = "20px");
+
+        // Padding effects for buttonP
+        const btnP = document.getElementById("buttonP")
+        btnP.addEventListener("mouseover", () => btnP.style.padding = "7.5px")
+        btnP.addEventListener("mouseout", () => btnP.style.padding = "5px")
+
+        // Padding effects for buttonW
+        const btnW = document.getElementById("WinButton")
+        btnW.addEventListener("mouseover", () => btnW.style.padding = "22.5px")
+        btnW.addEventListener("mouseout", () => btnW.style.padding = "15px")
         
+        // Initial UI update
+        setInterval(updateUI, 1);
+
+        // Coin Animation
+        function FallingCoins() {
+            var coin = document.getElementById('Coin')
+            var coinx = Math.floor(Math.random() * window.innerWidth)
+            coin.style.right = coinx + "px"
+            coin.style.animationName = "none"
+            void coin.offsetWidth
+            coin.style.animationName = "fall"
+            }
+
+       //prestige logic
+        document.getElementById("buttonP").addEventListener("click", function (){
+            if(coins >= costP){
+                coins = 0
+                cpc = 1
+                psmult++
+                costP = costP * 3
+            }
+        })
+        document.getElementById("WinButton").addEventListener("click", function(){
+            if(coins >= 20000000){
+                alert("You won! and with " + coins + " Coins!")
+            }
+        })
     </script>
-
-    <button id="button" style="padding: 5px;" onmouseout="document.getElementById('button').style.padding = '5px'" ;
-        onmouseover="document.getElementById('button').style.padding = '10px'" ;
-        onclick=" Coins = Coins + CPC; document.getElementById('output').innerHTML = 'Coins: ' + Coins">
-        Click Me!
-    </button>
-
-    <p id="output">Coins: 1</p>
-    <br>
-    <br>
-    <button onclick="AddCPC(1, 15)">More Coins Per Click</button>
 </body>
+
 </html>
